@@ -1,0 +1,38 @@
+[
+  {
+    "id": "NAV-001",
+    "query": "Where is an access token checked for validity?",
+    "expected_file": "auth.py",
+    "expected_symbol": "validate_token"
+  },
+  {
+    "id": "NAV-002",
+    "query": "Which function returns no username when a token is not recognized?",
+    "expected_file": "auth.py",
+    "expected_symbol": "validate_token"
+  },
+  {
+    "id": "NAV-003",
+    "query": "How can I get a user profile if I have an auth token using the api?",
+    "expected_file": "api.py",
+    "expected_symbol": "get_profile"
+  },
+  {
+    "id": "NAV-004",
+    "query": "Which API handler returns an unauthorized response for invalid tokens?",
+    "expected_file": "api.py",
+    "expected_symbol": "get_profile"
+  },
+    {
+    "id": "NAV-005",
+    "query": "How can I find a user by username in the database?",
+    "expected_file": "database.py",
+    "expected_symbol": "find_user"
+  },
+  {
+    "id": "NAV-006",
+    "query": "Where is the behavior for looking up a nonexistent user implemented?",
+    "expected_file": "database.py",
+    "expected_symbol": "find_user"
+}
+]
