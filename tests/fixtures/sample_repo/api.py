@@ -8,6 +8,4 @@ def get_profile(token: str):
     if username is None:
         return {"error": "Unauthorized"}
 
-    return {
-        "data": find_user(username)
-    }
+    return {"data": find_user(username)}

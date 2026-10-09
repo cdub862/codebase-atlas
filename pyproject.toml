@@ -7,4 +7,19 @@ dependencies = []
 [dependency-groups]
 dev = [
     "pytest>=9.1.1",
+    "ruff>=0.16.10",
+]
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = [
+    "E4",  # Import and formatting-related errors
+    "E7",  # Statement formatting errors
+    "E9",  # Syntax errors
+    "F",   # Pyflakes
+    "I",   # Import sorting
+    "B",   # Common programming mistakes
+    "UP",  # Modern Python syntax
 ]

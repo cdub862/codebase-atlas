@@ -1,16 +1,14 @@
 from pathlib import Path
 
-from codebase_atlas.indexing import index_python_functions, FunctionEntry
-
+from codebase_atlas.indexing import FunctionEntry, index_python_functions
 
 FIXTURE_PATH = Path(__file__).parent / "fixtures" / "sample_repo"
+
 
 def get_expected_source(entry: FunctionEntry):
     file_path = FIXTURE_PATH / entry.file
     lines = file_path.read_text(encoding="utf-8").splitlines()
-    return "\n".join(
-        lines[entry.start_line - 1:entry.end_line]
-    ).strip()
+    return "\n".join(lines[entry.start_line - 1 : entry.end_line]).strip()
 
 
 def test_index_python_functions():
@@ -22,10 +20,7 @@ def test_index_python_functions():
         functions[entry.symbol] = entry
 
         assert 1 <= entry.start_line <= entry.end_line
-        assert entry.source.lstrip().startswith((
-            f"def {entry.symbol}(",
-            f"async def {entry.symbol}("
-        ))
+        assert entry.source.lstrip().startswith((f"def {entry.symbol}(", f"async def {entry.symbol}("))
 
     assert len(entries) == 3
     # api / get_profile
