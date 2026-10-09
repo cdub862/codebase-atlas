@@ -1,5 +1,5 @@
-from dataclasses import dataclass
 import re
+from dataclasses import dataclass
 
 from codebase_atlas.indexing import FunctionEntry
 
@@ -9,8 +9,10 @@ class SearchResult:
     entry: FunctionEntry
     score: int
 
+
 def tokenize(s: str) -> set[str]:
-    return set(re.findall(r'[a-z0-9]+', s.lower()))
+    return set(re.findall(r"[a-z0-9]+", s.lower()))
+
 
 def get_score(query: str, entry: FunctionEntry):
     query_tokens = tokenize(query)
@@ -31,9 +33,11 @@ def search_functions(
 ) -> list[SearchResult]:
 
     results = [
-        SearchResult(entry=entry, score=get_score(query, entry))
-        for entry in entries
+        SearchResult(entry=entry, score=get_score(query, entry)) for entry in entries
     ]
-    results = sorted([r for r in results if r.score > 0], key=lambda r: (-r.score, r.entry.file, r.entry.symbol))[:limit]
+    results = sorted(
+        [r for r in results if r.score > 0],
+        key=lambda r: (-r.score, r.entry.file, r.entry.symbol),
+    )[:limit]
 
     return results
