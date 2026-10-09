@@ -4,4 +4,4 @@ TOKENS = {
 }
 
 def validate_token(token: str):
-    return TOKENS.get(token, None)
+    return TOKENS.get(token)
