@@ -32,9 +32,7 @@ def search_functions(
     limit: int = 5,
 ) -> list[SearchResult]:
 
-    results = [
-        SearchResult(entry=entry, score=get_score(query, entry)) for entry in entries
-    ]
+    results = [SearchResult(entry=entry, score=get_score(query, entry)) for entry in entries]
     results = sorted(
         [r for r in results if r.score > 0],
         key=lambda r: (-r.score, r.entry.file, r.entry.symbol),

@@ -20,28 +20,20 @@ def test_index_python_functions():
         functions[entry.symbol] = entry
 
         assert 1 <= entry.start_line <= entry.end_line
-        assert entry.source.lstrip().startswith(
-            (f"def {entry.symbol}(", f"async def {entry.symbol}(")
-        )
+        assert entry.source.lstrip().startswith((f"def {entry.symbol}(", f"async def {entry.symbol}("))
 
     assert len(entries) == 3
     # api / get_profile
     assert "get_profile" in functions
     assert functions["get_profile"].file == "api.py"
-    assert functions["get_profile"].source.strip() == get_expected_source(
-        functions["get_profile"]
-    )
+    assert functions["get_profile"].source.strip() == get_expected_source(functions["get_profile"])
 
     # auth / validate_token
     assert "validate_token" in functions
     assert functions["validate_token"].file == "auth.py"
-    assert functions["validate_token"].source.strip() == get_expected_source(
-        functions["validate_token"]
-    )
+    assert functions["validate_token"].source.strip() == get_expected_source(functions["validate_token"])
 
     # database / find_user
     assert "find_user" in functions
     assert functions["find_user"].file == "database.py"
-    assert functions["find_user"].source.strip() == get_expected_source(
-        functions["find_user"]
-    )
+    assert functions["find_user"].source.strip() == get_expected_source(functions["find_user"])
